@@ -20,21 +20,20 @@ func MergeSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 }
 
 func mergeSort(matrix [][3]int32, start int, end int, isBigger func([3]int32, [3]int32) bool) {
-	if end <= start {
+	if end <= start+1 {
 		return
 	}
-	p := int((end + start) / 2)
-	mergeSort(matrix, start, p, isBigger)
-	mergeSort(matrix, p+1, end, isBigger)
-	merge(matrix, start, p, end, isBigger)
+	middle := int((end + start) / 2)
+	mergeSort(matrix, start, middle, isBigger)
+	mergeSort(matrix, middle, end, isBigger)
+	merge(matrix, start, middle, end, isBigger)
 
 }
 
 func merge(matrix [][3]int32, start int, middle int, end int, isBigger func([3]int32, [3]int32) bool) {
 	matrix1 := append(make([][3]int32, 0), matrix[start:middle]...)
 	matrix2 := append(make([][3]int32, 0), matrix[middle:end]...)
-	i := 0
-	j := 0
+	i, j := 0, 0
 	var key int
 	for key = start; i < len(matrix1) && j < len(matrix2); key++ {
 		if isBigger(matrix1[i], matrix2[j]) {
