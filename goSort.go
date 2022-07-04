@@ -30,18 +30,28 @@ func InsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 
 	}
 }
-func InsertionBinarySort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+func BinaryInsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	for key := 1; key < len(matrix); key++ {
 		current := matrix[key]
 		var idx int
-		for idx = key - 1; idx >= 0; idx-- {
-			if isBigger(matrix[idx], current) {
-				matrix[idx+1] = matrix[idx]
+		// Binary Search to insert current element
+		for start, end := 0, key; start < end; {
+			middle := int((end + start) / 2)
+			idx = middle
+			if isBigger(matrix[middle], current) {
+				end = middle
+			} else if isBigger(current, matrix[middle]) {
+				idx++
+				start = middle + 1
 			} else {
 				break
 			}
 		}
-		matrix[idx+1] = current
+		// Insert Element in place
+		for i := key - 1; i >= idx; i-- {
+			matrix[i+1] = matrix[i]
+		}
+		matrix[idx] = current
 
 	}
 }
