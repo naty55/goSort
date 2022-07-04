@@ -8,8 +8,10 @@ import (
 
 var matrix1 = [][3]int32{{4, 3}, {1, 2}, {1, 1}, {3, 2}, {6, 7}, {4, 4}}  // Random Matrix
 var matrix2 = [][3]int32{{6}, {5}, {5, 1}, {4}, {3}, {2}, {1}, {0}, {-2}} // Complete reversed Matrix
+var matrix3 = [][3]int32{{6}, {6}, {4}, {5}, {3}, {3}, {3}, {2}, {4}}     // Matrix with duplicates
+var matrix4 = [][3]int32{{1}, {2}, {3}, {3}, {4}, {5}, {6}, {7}}          // Sorted Matrix
 
-var matrices = [][][3]int32{matrix1, matrix2}
+var matrices = [][][3]int32{matrix1, matrix2, matrix3, matrix4}
 
 func main() {
 	testSort("InsertionSort", goSort.InsertionSort, isBigger)
