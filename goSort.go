@@ -1,5 +1,20 @@
+// Package goSort provides an implementation for many types of SORT ALGORITHMS.
+//
+// To Make things more fun, the implementation will be for [][3]int32 slices.
+//
+// ===============
+//
+// So who says which slice is "bigger"?
+//
+// The defnition for which slice is bigger than others has been left for the user, the user will have to pass a comparsion function taking 2 [3]int32 arrays and return @true if and only if the first is the bigger (according to his/her definition)
+//
+// Author: Naty Mina
+//
+// NOTE:  This package is an eductional project for learning and practicing algorithmic thinking and NOT intended to be used outside the classroom
 package goSort
 
+// === Clasic InsertionSort ===
+//
 func InsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	for key := 1; key < len(matrix); key++ {
 		current := matrix[key]
@@ -15,6 +30,22 @@ func InsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 
 	}
 }
+func InsertionBinarySort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	for key := 1; key < len(matrix); key++ {
+		current := matrix[key]
+		var idx int
+		for idx = key - 1; idx >= 0; idx-- {
+			if isBigger(matrix[idx], current) {
+				matrix[idx+1] = matrix[idx]
+			} else {
+				break
+			}
+		}
+		matrix[idx+1] = current
+
+	}
+}
+
 func MergeSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	mergeSort(matrix, 0, len(matrix), isBigger)
 }
