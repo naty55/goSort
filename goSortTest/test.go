@@ -14,11 +14,11 @@ var matrix4 = [][3]int32{{1}, {2}, {3}, {3}, {4}, {5}, {6}, {7}}          // Sor
 var matrices = [][][3]int32{matrix1, matrix2, matrix3, matrix4}
 
 func main() {
+	testSort("BubbleSort", goSort.BubbleSort, isBigger)
 	testSort("InsertionSort", goSort.InsertionSort, isBigger)
 	testSort("InsertionBinarySort", goSort.BinaryInsertionSort, isBigger)
 	testSort("MergeSort", goSort.MergeSort, isBigger)
 	testSort("SelectionSort", goSort.SelctionSort, isBigger)
-	testSort("BubbleSort", goSort.BubbleSort, isBigger)
 }
 func isBigger(a [3]int32, b [3]int32) bool {
 	return a[0] > b[0] || (a[0] == b[0] && a[1] > b[1])
