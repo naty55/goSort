@@ -96,3 +96,19 @@ func merge(matrix [][3]int32, start int, middle int, end int, isBigger func([3]i
 		key++
 	}
 }
+
+func SelctionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	for i := 0; i < len(matrix); i++ {
+		minIdx := i
+		for j := i + 1; j < len(matrix); j++ {
+			if isBigger(matrix[minIdx], matrix[j]) {
+				minIdx = j
+			}
+		}
+
+		temp := matrix[i]
+		matrix[i] = matrix[minIdx]
+		matrix[minIdx] = temp
+
+	}
+}
