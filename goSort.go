@@ -13,6 +13,19 @@
 // NOTE:  This package is an eductional project for learning and practicing algorithmic thinking and NOT intended to be used outside the classroom
 package goSort
 
+func BubbleSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	for j := len(matrix); j > 1; j-- {
+		for i := 1; i < j; i++ {
+			if isBigger(matrix[i-1], matrix[i]) {
+				temp := matrix[i-1]
+				matrix[i-1] = matrix[i]
+				matrix[i] = temp
+			}
+		}
+	}
+
+}
+
 // === Clasic InsertionSort ===
 //
 func InsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
@@ -47,7 +60,7 @@ func BinaryInsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bo
 				break
 			}
 		}
-		// Insert Element in place
+		// Insert Element in idx'th place
 		for i := key - 1; i >= idx; i-- {
 			matrix[i+1] = matrix[i]
 		}
