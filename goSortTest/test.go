@@ -18,6 +18,7 @@ func main() {
 	testSort("InsertionSort", goSort.InsertionSort, isBigger)
 	testSort("InsertionBinarySort", goSort.BinaryInsertionSort, isBigger)
 	testSort("MergeSort", goSort.MergeSort, isBigger)
+	testSort("QuickSort", goSort.QuickSort, isBigger)
 	testSort("SelectionSort", goSort.SelctionSort, isBigger)
 }
 func isBigger(a [3]int32, b [3]int32) bool {
