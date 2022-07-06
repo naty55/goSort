@@ -110,6 +110,38 @@ func merge(matrix [][3]int32, start int, middle int, end int, isBigger func([3]i
 	}
 }
 
+func QuickSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	quickSort(matrix, 0, len(matrix)-1, isBigger)
+}
+
+func quickSort(matrix [][3]int32, start int, end int, isBigger func([3]int32, [3]int32) bool) {
+	if end <= start || start < 0 {
+		return
+	}
+	p := partitionLast(matrix, start, end, isBigger)
+	quickSort(matrix, p+1, end, isBigger)
+	quickSort(matrix, start, p-1, isBigger)
+}
+
+func partitionLast(matrix [][3]int32, start int, end int, isBigger func([3]int32, [3]int32) bool) int {
+	pivot := matrix[end]
+	i := start
+	for j := start; j < end; j++ {
+		if isBigger(pivot, matrix[j]) {
+			swap(matrix, i, j)
+			i++
+		}
+	}
+	swap(matrix, i, end)
+	return i
+}
+
+func swap(matrix [][3]int32, i int, j int) {
+	temp := matrix[i]
+	matrix[i] = matrix[j]
+	matrix[j] = temp
+}
+
 func SelctionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	for i := 0; i < len(matrix); i++ {
 		minIdx := i
