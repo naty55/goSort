@@ -69,6 +69,36 @@ func BinaryInsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bo
 	}
 }
 
+func HeapSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	heapifyMatrix(matrix, isBigger)
+	for end := len(matrix) - 1; end >= 0; end-- {
+		swap(matrix, end, 0)
+		maxHeapify(matrix, 0, end, isBigger)
+	}
+}
+
+func heapifyMatrix(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	for i := int(len(matrix) / 2); i >= 0; i-- {
+		maxHeapify(matrix, i, len(matrix), isBigger)
+	}
+}
+
+func maxHeapify(heap [][3]int32, i int, heapEnd int, isBigger func([3]int32, [3]int32) bool) {
+	left := 2 * i
+	right := 2*i + 1
+	largest := i
+	if left < heapEnd && isBigger(heap[left], heap[largest]) {
+		largest = left
+	}
+	if right < heapEnd && isBigger(heap[right], heap[largest]) {
+		largest = right
+	}
+	if largest != i {
+		swap(heap, largest, i)
+		maxHeapify(heap, largest, heapEnd, isBigger)
+	}
+}
+
 func MergeSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	mergeSort(matrix, 0, len(matrix), isBigger)
 }
