@@ -15,6 +15,7 @@ var matrices = [][][3]int32{matrix1, matrix2, matrix3, matrix4}
 
 func main() {
 	testSort("BubbleSort", goSort.BubbleSort, isBigger)
+	testSort("HeapSort", goSort.HeapSort, isBigger)
 	testSort("InsertionSort", goSort.InsertionSort, isBigger)
 	testSort("InsertionBinarySort", goSort.BinaryInsertionSort, isBigger)
 	testSort("MergeSort", goSort.MergeSort, isBigger)
@@ -34,7 +35,7 @@ func testSort(name string, sortAlg func([][3]int32, func([3]int32, [3]int32) boo
 		sortAlg(test_matrix, isBigger)
 		if !isSorted(test_matrix, isBigger) {
 			failed = true
-			failed_test = matrices[i]
+			failed_test = test_matrix
 			break
 		}
 	}
