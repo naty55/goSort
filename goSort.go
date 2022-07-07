@@ -10,7 +10,7 @@
 //
 // Author: Naty Mina
 //
-// Number of Algorithms so far :  6
+// Number of Algorithms so far :  7
 //
 // NOTE:  This package is an eductional project for learning and practicing algorithmic thinking and NOT intended to be used outside the classroom
 package goSort
