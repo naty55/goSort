@@ -1,6 +1,6 @@
 ---
 name: Algorithm request
-about: Suggest an sorting algorithm for the project
+about: Suggest a sorting algorithm for the project
 title: ''
 labels: ''
 assignees: ''
