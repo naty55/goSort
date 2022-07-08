@@ -10,7 +10,7 @@
 //
 // Author: Naty Mina
 //
-// Number of Algorithms so far :  7
+// Number of Algorithms so far :  8
 //
 // NOTE:  This package is an eductional project for learning and practicing algorithmic thinking and NOT intended to be used outside the classroom
 package goSort
@@ -182,4 +182,24 @@ func SelctionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 		}
 		swap(matrix, i, minIdx)
 	}
+}
+
+func StoogeSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
+	stoogeSort(matrix, 0, len(matrix)-1, isBigger)
+}
+
+func stoogeSort(matrix [][3]int32, i int, j int, isBigger func([3]int32, [3]int32) bool) {
+	if len(matrix) <= 1 {
+		return
+	}
+	if isBigger(matrix[i], matrix[j]) {
+		swap(matrix, i, j)
+	}
+	if i+1 >= j {
+		return
+	}
+	k := int((j - i + 1) / 3)
+	stoogeSort(matrix, i, j-k, isBigger)
+	stoogeSort(matrix, i+k, j, isBigger)
+	stoogeSort(matrix, i, j-k, isBigger)
 }
