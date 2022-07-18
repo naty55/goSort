@@ -172,6 +172,16 @@ func swap(matrix [][3]int32, i int, j int) {
 	matrix[j] = temp
 }
 
+func RadixSort(matrix [][3]int32) {
+	for i := 2; i >= 0; i-- {
+		countSort(matrix, i)
+	}
+}
+
+func countSort(matrix [][3]int32, k int) {
+
+}
+
 func SelctionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	for i := 0; i < len(matrix); i++ {
 		minIdx := i
