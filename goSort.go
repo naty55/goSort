@@ -26,7 +26,7 @@ func BubbleSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 
 }
 
-// === Clasic InsertionSort ===
+// === Classic InsertionSort ===
 //
 func InsertionSort(matrix [][3]int32, isBigger func([3]int32, [3]int32) bool) {
 	for key := 1; key < len(matrix); key++ {
